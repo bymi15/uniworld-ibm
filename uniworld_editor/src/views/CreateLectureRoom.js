@@ -32,9 +32,9 @@ const CreateLectureRoom = (props) => {
   const handleSubmit = async (data) => {
     if (validateLectureRoom(data)) {
       try {
-        const createdLectureRoom = await LectureRoomService.create(data);
+        const response = await LectureRoomService.create(data);
         props.history.push({
-          pathname: `/lecturerooms/${createdLectureRoom._id}`,
+          pathname: `/lecturerooms/${response.id}`,
           state: { created: true },
         });
       } catch (err) {

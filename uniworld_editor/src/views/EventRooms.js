@@ -112,12 +112,12 @@ const EventRooms = (props) => {
     setCurrentEventRoom(index);
   };
 
-  const handleClickRemove = async (id) => {
+  const handleClickRemove = async (index) => {
     if (window.confirm("Are you sure?")) {
       try {
-        await EventRoomService.delete(id);
+        await EventRoomService.delete(eventRooms[index]._id, eventRooms[index]._rev);
         setCurrentEventRoom(0);
-        setEventRooms(eventRooms.filter((eventRoom) => eventRoom._id !== id));
+        setEventRooms(eventRooms.filter((eventRoom) => eventRoom._id !== eventRooms[index]._id));
       } catch (err) {
         console.log(err);
       }
@@ -125,7 +125,6 @@ const EventRooms = (props) => {
   };
 
   const handleClickEdit = (index) => {
-    console.log(eventRooms[index]);
     props.history.push({
       pathname: "/edit",
       state: { eventRoom: eventRooms[index] },
@@ -261,7 +260,7 @@ const EventRooms = (props) => {
                       color="secondary"
                       variant="outlined"
                       onClick={() => {
-                        handleClickRemove(eventRooms[currentEventRoom]._id);
+                        handleClickRemove(currentEventRoom);
                       }}
                     >
                       Remove
@@ -270,7 +269,7 @@ const EventRooms = (props) => {
                 </React.Fragment>
               ) : (
                 <Typography id="createEventRoomButton" color="textSecondary" gutterBottom>
-                  Create an event room
+                 There are no event rooms to display.
                 </Typography>
               )}
             </Card>

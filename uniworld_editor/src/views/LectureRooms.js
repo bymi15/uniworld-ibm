@@ -118,7 +118,7 @@ const LectureRooms = (props) => {
           getFileName(lectureRoomToDelete.firstSlideUrl),
           lectureRoomToDelete.numSlides
         );
-        await LectureRoomService.delete(lectureRoomToDelete._id);
+        await LectureRoomService.delete(lectureRoomToDelete._id, lectureRoomToDelete._rev);
         setCurrentLectureRoom(0);
         setLectureRooms(
           lectureRooms.filter((lectureRoom) => lectureRoom._id !== lectureRoomToDelete._id)
@@ -280,7 +280,7 @@ const LectureRooms = (props) => {
                 </React.Fragment>
               ) : (
                 <Typography id="createLectureRoomButton" color="textSecondary" gutterBottom>
-                  Create lecture room
+                  There are no lecture rooms to display.
                 </Typography>
               )}
             </Card>

@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Button, Container, Typography } from "@material-ui/core";
 import UniWorldScreenShotImg from "../assets/img/uniworldscreenshot.png";
 import { Link as RouterLink } from "react-router-dom";
+import { platformURL } from "../config";
 
 const useStyles = makeStyles((theme) => ({
   jumbo: {
@@ -44,7 +45,7 @@ const Home = () => {
             <Typography variant="h2">UniWorld Editor</Typography>
             <Typography variant="subtitle1">
               This is a web editor tool for managing virtual rooms in the{" "}
-              <a href="https://brianmin.tech/uniworld/" target="_blank" rel="noreferrer noopener">
+              <a href={platformURL} target="_blank" rel="noreferrer noopener">
                 UniWorld platform
               </a>
             </Typography>

@@ -32,9 +32,9 @@ const CreateEventRoom = (props) => {
   const handleSubmit = async (data) => {
     if (validateEventRoom(data)) {
       try {
-        const createdEventRoom = await EventRoomService.create(data);
+        const response = await EventRoomService.create(data);
         props.history.push({
-          pathname: `/eventrooms/${createdEventRoom._id}`,
+          pathname: `/eventrooms/${response.id}`,
           state: { created: true },
         });
       } catch (err) {

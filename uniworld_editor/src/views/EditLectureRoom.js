@@ -30,12 +30,11 @@ const EditLectureRoom = (props) => {
   };
 
   const handleSubmit = async (data) => {
-    const id = props.location.state.lectureRoom._id;
     if (validateLectureRoom(data)) {
       try {
-        const updatedLectureRoom = await LectureRoomService.update(id, data);
+        await LectureRoomService.update(data);
         props.history.push({
-          pathname: `/lecturerooms/${updatedLectureRoom._id}`,
+          pathname: `/lecturerooms/${data._id}`,
           state: { created: true },
         });
       } catch (err) {
